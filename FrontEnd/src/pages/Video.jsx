@@ -134,6 +134,7 @@ const Video = () => {
         );
         setChannel(channelRes.data);
         dispatch(fetchSuccess(videoRes.data));
+        console.log(setChannel);
       } catch (err) {}
     };
     fetchData();
