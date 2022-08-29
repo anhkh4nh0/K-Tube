@@ -94,6 +94,10 @@ const Menu = ({ darkMode, setDarkMode }) => {
             K-Tube
           </Logo>
         </Link>
+          <Item onClick={() => setDarkMode(!darkMode)}>
+          <SettingsBrightnessOutlinedIcon />
+          {darkMode ? "Light" : "Dark"} Mode
+        </Item>
         <Item>
           <HomeIcon />
           Home
@@ -137,7 +141,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
             <Hr />
           </>
         }
-        <Title>BEST OF LAMATUBE</Title>
+        <Title>BEST OF K-TUBE</Title>
         <Item>
           <LibraryMusicOutlinedIcon />
           Music
@@ -175,10 +179,10 @@ const Menu = ({ darkMode, setDarkMode }) => {
           <HelpOutlineOutlinedIcon />
           Help
         </Item>
-        <Item onClick={() => setDarkMode(!darkMode)}>
+        {/* <Item onClick={() => setDarkMode(!darkMode)}>
           <SettingsBrightnessOutlinedIcon />
           {darkMode ? "Light" : "Dark"} Mode
-        </Item>
+        </Item> */}
       </Wrapper>
     </Container>
   );

@@ -102,7 +102,7 @@ const SignIn = () => {
           .then((res) => {
             console.log(res)
             dispatch(loginSuccess(res.data));
-            navigate("/")
+            navigate("/Home")
           });
       })
       .catch((error) => {

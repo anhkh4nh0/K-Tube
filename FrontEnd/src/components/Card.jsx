@@ -60,6 +60,10 @@ const Card = ({ type, video }) => {
     const fetchChannel = async () => {
       const res = await axios.get(`/users/find/${video.userId}`);
       setChannel(res.data);
+      console.log(res.data);
+      
+
+      // console.log(<channel></channel>);
     };
     fetchChannel();
   }, [video.userId]);
@@ -74,11 +78,11 @@ const Card = ({ type, video }) => {
         <Details type={type}>
           <ChannelImage
             type={type}
-            src={channel.img}
+            src={channel?.img}
           />
           <Texts>
             <Title>{video.title}</Title>
-            <ChannelName>{channel.name}</ChannelName>
+            <ChannelName>{channel?.name}</ChannelName>
             <Info>{video.views} views • {format(video.createdAt)}</Info>
           </Texts>
         </Details>
