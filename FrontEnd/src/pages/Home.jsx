@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Card from "../components/Card";
 import axios from "axios";
+import Loading from "../components/Loading"
+
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -10,39 +12,37 @@ const Container = styled.div`
 
 const Home = ({ type }) => {
   const [videos, setVideos] = useState([]);
-
-  useEffect(() => {
-    const fetchVideos = async () => {
+  const [loadings, setLoadings] = useState(false)
+  const fetchVideos = async () => {
+    setLoadings(true)
+    try {
       const res = await axios.get(`/videos/${type}`);
       setVideos(res.data);
-    };
+
+    } catch (err) {
+console.log('err');
+    } finally {
+      setTimeout(() => {
+        setLoadings(false)
+      }, 3000);
+    }
+  };
+  useEffect(() => {
+
     fetchVideos();
   }, [type]);
 
-
+  console.log(videos);
   return (
     <>
-      {/* ô input search ở đây */}
-      {/* <li>
-        <a href="/">
-            <div></div>
-            <h3>dgfdg</h3>
-        </a>
-        <a href="/">
-            <div ></div>
-            <h3>dgfdg</h3>
-        </a>
-        <a href="/">
-            <div></div>
-            <h3>dgfdg</h3>
-        </a>
-      </li> */}
-
-      <Container>
-        {videos.map((video) => (
-          <Card key={video._id} video={video} />
-        ))}
-      </Container>
+      {loadings ?
+        <Loading /> :
+        <Container>
+          {videos.map((video) => (
+            <Card key={video._id} video={video} />
+          ))}
+        </Container>
+      }
     </>
   );
 };
