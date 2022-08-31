@@ -24,7 +24,7 @@ console.log('err');
     } finally {
       setTimeout(() => {
         setLoadings(false)
-      }, 3000);
+      }, 10000);
     }
   };
   useEffect(() => {
