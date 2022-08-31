@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { loginFailure, loginStart, loginSuccess } from "../redux/userSlice";
+import { registerFailure, registerStart, registerSuccess } from "../redux/userRegister";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
 import { async } from "@firebase/util";
@@ -86,7 +87,21 @@ const SignIn = () => {
     } catch (err) {
       dispatch(loginFailure());
     }
-    console.log(loginSuccess);
+  };
+
+        //TODO: REGISTER FUNCTIONALITY
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    dispatch(registerStart());
+    try {
+      const res = await axios.post("/auth/signup", { name, email, password });
+      dispatch(registerSuccess(res.data));
+      navigate("/")
+    } catch (err) {
+      dispatch(registerFailure());
+    }
+    console.log(handleRegister);
   };
 
   const signInWithGoogle = async () => {
@@ -102,22 +117,20 @@ const SignIn = () => {
           .then((res) => {
             console.log(res)
             dispatch(loginSuccess(res.data));
-            navigate("/Home")
+            navigate("/")
           });
       })
       .catch((error) => {
         dispatch(loginFailure());
       });
+      console.log(signInWithGoogle);
   };
-
-  //TODO: REGISTER FUNCTIONALITY
-
 
   return (
     <Container>
       <Wrapper>
         <Title>Sign in</Title>
-        <SubTitle>to continue to K-Tube</SubTitle>
+        <SubTitle>to continue to KTuber</SubTitle>
         <Input
           placeholder="username"
           onChange={(e) => setName(e.target.value)}
@@ -129,8 +142,12 @@ const SignIn = () => {
         />
         <Button onClick={handleLogin}>Sign in</Button>
         <Title>or</Title>
+
+        {/* /*LoginWithGG */}
         <Button onClick={signInWithGoogle}>Signin with Google</Button>
         <Title>or</Title>
+
+        {/* Register */}
         <Input
           placeholder="username"
           onChange={(e) => setName(e.target.value)}
@@ -141,7 +158,7 @@ const SignIn = () => {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button>Sign up</Button>
+        <Button onClick={handleRegister}>Sign up</Button>
       </Wrapper>
       <More>
         English(USA)

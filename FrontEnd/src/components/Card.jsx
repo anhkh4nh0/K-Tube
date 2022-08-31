@@ -60,10 +60,6 @@ const Card = ({ type, video }) => {
     const fetchChannel = async () => {
       const res = await axios.get(`/users/find/${video.userId}`);
       setChannel(res.data);
-      console.log(res.data);
-      
-
-      // console.log(<channel></channel>);
     };
     fetchChannel();
   }, [video.userId]);

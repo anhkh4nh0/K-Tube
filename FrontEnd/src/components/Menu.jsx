@@ -91,10 +91,10 @@ const Menu = ({ darkMode, setDarkMode }) => {
         <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
           <Logo>
             <Img src={LamaTube} />
-            K-Tube
+            KTuber
           </Logo>
         </Link>
-          <Item onClick={() => setDarkMode(!darkMode)}>
+        <Item onClick={() => setDarkMode(!darkMode)}>
           <SettingsBrightnessOutlinedIcon />
           {darkMode ? "Light" : "Dark"} Mode
         </Item>
@@ -141,7 +141,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
             <Hr />
           </>
         }
-        <Title>BEST OF K-TUBE</Title>
+        <Title>BEST OF KTUBER</Title>
         <Item>
           <LibraryMusicOutlinedIcon />
           Music
@@ -154,7 +154,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
           <SportsEsportsOutlinedIcon />
           Gaming
         </Item>
-        <Item>
+        {/* <Item>
           <MovieOutlinedIcon />
           Movies
         </Item>
@@ -166,8 +166,8 @@ const Menu = ({ darkMode, setDarkMode }) => {
           <LiveTvOutlinedIcon />
           Live
         </Item>
-        <Hr />
-        <Item>
+        <Hr /> */}
+        {/* <Item>
           <SettingsOutlinedIcon />
           Settings
         </Item>
@@ -178,11 +178,8 @@ const Menu = ({ darkMode, setDarkMode }) => {
         <Item>
           <HelpOutlineOutlinedIcon />
           Help
-        </Item>
-        {/* <Item onClick={() => setDarkMode(!darkMode)}>
-          <SettingsBrightnessOutlinedIcon />
-          {darkMode ? "Light" : "Dark"} Mode
         </Item> */}
+        
       </Wrapper>
     </Container>
   );

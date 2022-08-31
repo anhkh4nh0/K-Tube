@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import SendIcon from '@mui/icons-material/Send';
+import Button from '@mui/material/Button';
 import Comment from "./Comment";
 
 const Container = styled.div``;
@@ -49,8 +51,9 @@ const Comments = ({videoId}) => {
   return (
     <Container>
       <NewComment>
-        <Avatar src={currentUser.img} />
+        <Avatar src={currentUser?.img} />
         <Input placeholder="Add a comment..." />
+        <Button><SendIcon /></Button>
       </NewComment>
       {comments.map(comment=>(
         <Comment key={comment._id} comment={comment}/>

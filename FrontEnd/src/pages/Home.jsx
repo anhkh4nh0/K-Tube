@@ -8,24 +8,42 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-const Home = ({type}) => {
+const Home = ({ type }) => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchVideos = async () => {
       const res = await axios.get(`/videos/${type}`);
       setVideos(res.data);
-      console.log(videos);
     };
     fetchVideos();
   }, [type]);
 
+
   return (
-    <Container>
-      {videos.map((video) => (
-        <Card key={video._id} video={video}/>
-      ))}
-    </Container>
+    <>
+      {/* ô input search ở đây */}
+      {/* <li>
+        <a href="/">
+            <div></div>
+            <h3>dgfdg</h3>
+        </a>
+        <a href="/">
+            <div ></div>
+            <h3>dgfdg</h3>
+        </a>
+        <a href="/">
+            <div></div>
+            <h3>dgfdg</h3>
+        </a>
+      </li> */}
+
+      <Container>
+        {videos.map((video) => (
+          <Card key={video._id} video={video} />
+        ))}
+      </Container>
+    </>
   );
 };
 

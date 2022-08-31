@@ -6,6 +6,18 @@ import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Upload from "./Upload";
+import Box from '@mui/material/Box';
+// import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import PersonAdd from '@mui/icons-material/PersonAdd';
+import Settings from '@mui/icons-material/Settings';
+import Logout from '@mui/icons-material/Logout';
 
 const Container = styled.div`
   position: sticky;
@@ -67,18 +79,53 @@ const User = styled.div`
   color: ${({ theme }) => theme.text};
 `;
 
-const Avatar = styled.img`
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: #999;
+// const Avatar = styled.img`
+//   width: 32px;
+//   height: 32px;
+//   border-radius: 50%;
+//   background-color: #999;
+// `;
+
+const Inputshow = styled.li`
+  width: 145vh;
+  /* opacity: 0.1; */
+    background: gray;
+    position: relative;
+    top: 30px;
+    right: 218px;
+    height: auto;
+    list-style: none;
 `;
 
+const ALink = styled.a`
+  text-decoration: none;
+    padding-left: 10px;
+    color:#fff;
+    `;
+
 const Navbar = () => {
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const navigate = useNavigate()
-  const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
   const [q, setQ] = useState("");
   const { currentUser } = useSelector((state) => state.user);
+
+  const [inputSearch, setInputSearch] = useState()
+
+
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = '/';
+  };
   return (
     <>
       <Container>
@@ -87,14 +134,67 @@ const Navbar = () => {
             <Input
               placeholder="Search"
               onChange={(e) => setQ(e.target.value)}
+              // value={inputSearch}
+              // onChange={(event) => {changeHandler(event);}}
+              // onInput={(e) => setInputSearch(e.target.value)}
+              // onClick={() => setShowBoxSearch(!showBoxSearch)}
             />
-            <SearchOutlinedIcon onClick={()=>navigate(`/search?q=${q}`)}/>
+            <SearchOutlinedIcon onClick={() => navigate(`/search?q=${q}`)} />
           </Search>
+          {/* <ul>
+          <Inputshow>
+        <ALink href="/"> dgfdg </ALink>
+      </Inputshow>
+          </ul> */}
+
           {currentUser ? (
             <User>
-              <VideoCallOutlinedIcon onClick={() => setOpen(true)} />
-              <Avatar src={currentUser.img} />
-              {currentUser.name}
+              <VideoCallOutlinedIcon onClick={() => setOpen1(true)} />
+              <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                <Tooltip title="Account settings">
+                  <IconButton
+                    onClick={handleClick}
+                    size="small"
+                    sx={{ ml: 2 }}
+                    aria-controls={open ? 'account-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                  >
+                    <Avatar src={currentUser.img} sx={{ width: 32, height: 32 }} />
+                  </IconButton>
+                </Tooltip>
+              </Box>
+              <Menu
+                anchorEl={anchorEl}
+                id="account-menu"
+                open={open}
+                onClose={handleClose}
+                onClick={handleClose}
+              >
+                <MenuItem>
+                  <Avatar src={currentUser.img} /> {currentUser.name}
+                </MenuItem>
+
+                <Divider />
+                <MenuItem>
+                  <ListItemIcon>
+                    <PersonAdd fontSize="small" />
+                  </ListItemIcon>
+                  Add another account
+                </MenuItem>
+                <MenuItem>
+                  <ListItemIcon>
+                    <Settings fontSize="small" />
+                  </ListItemIcon>
+                  Settings
+                </MenuItem>
+                <MenuItem onClick={logout}>
+                  <ListItemIcon>
+                    <Logout fontSize="small" />
+                  </ListItemIcon>
+                  Logout
+                </MenuItem>
+              </Menu>
             </User>
           ) : (
             <Link to="signin" style={{ textDecoration: "none" }}>
@@ -103,10 +203,11 @@ const Navbar = () => {
                 SIGN IN
               </Button>
             </Link>
+
           )}
         </Wrapper>
       </Container>
-      {open && <Upload setOpen={setOpen} />}
+      {open1 && <Upload setOpen={setOpen1} />}
     </>
   );
 };

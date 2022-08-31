@@ -4394,11 +4394,6 @@
   "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-10.0.0.tgz"
   "version" "10.0.0"
 
-"dotenv@^16.0.1":
-  "integrity" "sha512-1K6hR6wtk2FviQ4kEiSjFiH5rpzEVi8WW0x96aztHVMhEspNpc4DVOUTEHtEva5VThQ8IaBX1Pe4gSzpVVUsKQ=="
-  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-16.0.1.tgz"
-  "version" "16.0.1"
-
 "duplexer@^0.1.2":
   "integrity" "sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg=="
   "resolved" "https://registry.npmjs.org/duplexer/-/duplexer-0.1.2.tgz"
@@ -5050,7 +5045,7 @@
     "locate-path" "^6.0.0"
     "path-exists" "^4.0.0"
 
-"firebase@^9.9.0":
+"firebase@^9.9.0", "firebase@>= 9.0.0":
   "integrity" "sha512-lU1FstWqfVZQfz4+TWCZvqJYbwZMyoyP0X/xD/YIfrtXgquOMEDTpoasH4P79N9y3I8iV+6gQHuVmpK+AX2elg=="
   "resolved" "https://registry.npmjs.org/firebase/-/firebase-9.9.3.tgz"
   "version" "9.9.3"
@@ -7869,9 +7864,9 @@
     "long" "^4.0.0"
 
 "protobufjs@^7.0.0":
-  "integrity" "sha512-ffNIEm+quOcYtQvHdW406v1NQmZSuqVklxsXk076BtuFnlYZfigLU+JOMrTD8TUOyqHYbRI/fSVNvgd25YeN3w=="
-  "resolved" "https://registry.npmjs.org/protobufjs/-/protobufjs-7.0.0.tgz"
-  "version" "7.0.0"
+  "integrity" "sha512-rCuxKlh0UQKSMjrpIcTLbR5TtGQ52cgs1a5nUoPBAKOccdPblN67BJtjrbtudUJK6HmBvUdsmymyYOzO7lxZEA=="
+  "resolved" "https://registry.npmjs.org/protobufjs/-/protobufjs-7.1.0.tgz"
+  "version" "7.1.0"
   dependencies:
     "@protobufjs/aspromise" "^1.1.2"
     "@protobufjs/base64" "^1.1.2"
@@ -7883,7 +7878,6 @@
     "@protobufjs/path" "^1.1.2"
     "@protobufjs/pool" "^1.1.0"
     "@protobufjs/utf8" "^1.1.0"
-    "@types/long" "^4.0.1"
     "@types/node" ">=13.7.0"
     "long" "^5.0.0"
 
@@ -8009,6 +8003,11 @@
   "resolved" "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz"
   "version" "6.0.11"
 
+"react-firebase-hooks@^5.0.3":
+  "integrity" "sha512-0+V2XwInZJNjW8B2cm+U21Hlv4xnp/1tJqIoDg2rjyWzKTQ9VoLPQ9PAt+fMqPumjLz5uCIREY7YqGSSjc439Q=="
+  "resolved" "https://registry.npmjs.org/react-firebase-hooks/-/react-firebase-hooks-5.0.3.tgz"
+  "version" "5.0.3"
+
 "react-is@^16.13.1":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -8066,7 +8065,7 @@
   dependencies:
     "history" "^5.2.0"
 
-"react-scripts@^5.0.1":
+"react-scripts@5.0.1":
   "integrity" "sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ=="
   "resolved" "https://registry.npmjs.org/react-scripts/-/react-scripts-5.0.1.tgz"
   "version" "5.0.1"

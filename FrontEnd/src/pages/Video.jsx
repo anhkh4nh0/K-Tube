@@ -141,11 +141,11 @@ const Video = () => {
 
   const handleLike = async () => {
     await axios.put(`/users/like/${currentVideo._id}`);
-    dispatch(like(currentUser._id));
+    dispatch(like(currentUser?._id));
   };
   const handleDislike = async () => {
     await axios.put(`/users/dislike/${currentVideo._id}`);
-    dispatch(dislike(currentUser._id));
+    dispatch(dislike(currentUser?._id));
   };
 
   const handleSub = async () => {
@@ -196,15 +196,15 @@ const Video = () => {
         <Hr />
         <Channel>
           <ChannelInfo>
-            <Image src={channel.img} />
+            <Image src={channel?.img} />
             <ChannelDetail>
-              <ChannelName>{channel.name}</ChannelName>
-              <ChannelCounter>{channel.subscribers} subscribers</ChannelCounter>
+              <ChannelName>{channel?.name}</ChannelName>
+              <ChannelCounter>{channel?.subscribers} subscribers</ChannelCounter>
               <Description>{currentVideo?.desc}</Description>
             </ChannelDetail>
           </ChannelInfo>
           <Subscribe onClick={handleSub}>
-            {currentUser.subscribedUsers?.includes(channel._id)
+            {currentUser?.subscribedUsers?.includes(channel?._id)
               ? "SUBSCRIBED"
               : "SUBSCRIBE"}
           </Subscribe>
