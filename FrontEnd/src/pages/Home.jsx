@@ -24,23 +24,30 @@ console.log('err');
     } finally {
       setTimeout(() => {
         setLoadings(false)
-      }, 10000);
+      }, 5000);
     }
   };
   useEffect(() => {
 
     fetchVideos();
   }, [type]);
-
-  console.log(videos);
+  console.log(videos.length)
   return (
     <>
       {loadings ?
         <Loading /> :
         <Container>
-          {videos.map((video) => (
-            <Card key={video._id} video={video} />
-          ))}
+          {
+            videos.lenght === 0
+            ?
+            null
+            :
+            <>
+               {videos.map((video) => (
+              <Card key={video._id} video={video} />
+            ))}
+            </>
+          }     
         </Container>
       }
     </>
